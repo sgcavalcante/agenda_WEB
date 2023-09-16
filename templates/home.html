@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <title>Agenda</title>
+</head>
+<body>
+    <h1>Bem vindo à Agenda</h1>
+    <table border = 1 class="table table-striped table-hover ">
+        <thead>
+          <tbody>
+              <tr>
+                  <th>#</th>
+                  <th>Nome</th>
+                  <th>Telefone</th>
+                  <th>Email</th>
+                  <th>Ações</th>
+                  
+                  {% for contato_id, contato in contatos.items  %}
+                    <tr>
+                        <td>{{ contato_id }}</td>
+                        <td>{{ contato.nome }}</td>
+                        <td>{{ contato.fone }}</td>
+                        <td>{{ contato.email }}</td>
+                        <td>
+                            <a href="#" class="btn btn-success btn-sm">
+                            <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a href="#" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                  {% endfor %}  
+                  
+            </tr>
+          </tbody>  
+        </thead>
+
+
+    </table>
+    <a href="area_restrita1.html" class="btn btn-dark">Área Restrita</a>  
+    
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
