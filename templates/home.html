@@ -19,9 +19,9 @@
                   <th>Email</th>
                   <th>Ações</th>
                   
-                  {% for contato_id, contato in contatos.items  %}
+                  {% for contato in contatos  %}
                     <tr>
-                        <td>{{ contato_id }}</td>
+                        <td>{{ contato.id }}</td>
                         <td>{{ contato.nome }}</td>
                         <td>{{ contato.fone }}</td>
                         <td>{{ contato.email }}</td>

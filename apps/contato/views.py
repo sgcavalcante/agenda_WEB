@@ -4,7 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-
+from apps.contato.models import Contato
 
 
 
@@ -31,7 +31,7 @@ def index(requisicao):
 
 
         }    
-
+    dados = Contato.objects.all()
     #return HttpResponse('<h1>Minha primeira página em Django</h1>')
     return render(requisicao,'home.html',{"contatos":dados})
 
