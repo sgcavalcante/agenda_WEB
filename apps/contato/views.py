@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 
 # Create your views here.
@@ -55,4 +55,17 @@ def form(requisicao):
 
     return render(requisicao,'form.html',{"form":form})
 
+def editar(requisicao,id):
 
+    contato = get_object_or_404(Contato,pk=id)
+    if requisicao.method =='GET':
+        form = ContatoForms(initial={'nome':contato.nome,'fone':contato.fone})
+    elif requisicao.method =='POST':
+        form = ContatoForms(requisicao.POST)
+        if form.is_valid():
+            contato.nome = form.cleaned_data['nome']
+            contato.fone = form.cleaned_data['fone']
+            contato.save()
+            return redirect('index')
+                
+    return render (requisicao,'edit.html',{"form":form,"id":id})
