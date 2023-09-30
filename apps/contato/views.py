@@ -69,3 +69,9 @@ def editar(requisicao,id):
             return redirect('index')
                 
     return render (requisicao,'edit.html',{"form":form,"id":id})
+
+def remover(requisicao,id):
+
+    contato = get_object_or_404(Contato,pk=id)
+    contato.delete()
+    return redirect('index')
