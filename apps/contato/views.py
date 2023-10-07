@@ -9,32 +9,12 @@ from apps.contato.forms import ContatoForms
 
 
 def index(requisicao):
-    '''
-    dados = {
-            1:{
-                "nome":"Weskley Bezerra",
-                "fone":"99675-3679",
-                "email":"weskley@xpto.com" 
-            },
-
-            2:{
-                "nome":"Filipe Oliveira",
-                "fone":"98787-5972",
-                "email":"filipe@xpto.com" 
-
-            },
-            3:{
-                "nome":"Ivad Etnaclavac ",
-                "fone":"98888-8888",
-                "email":"ivad@gmail.com" 
-
-            }
-
-
-        }    
-    '''    
+    usuario_logado = requisicao.user.is_authenticated   
+     
+    if not usuario_logado:
+        return(redirect('login'))
     dados = Contato.objects.all()
-    #return HttpResponse('<h1>Minha primeira página em Django</h1>')
+    
     return render(requisicao,'index.html',{"contatos":dados})
 
 def form(requisicao):
